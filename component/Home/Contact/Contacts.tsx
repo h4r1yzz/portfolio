@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { BiEnvelope, BiPhone } from 'react-icons/bi'
 import { BsHouse } from 'react-icons/bs';
-import { FaAddressBook, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const Contacts = () => {
   const [result, setResult] = useState("");
@@ -16,8 +16,7 @@ const Contacts = () => {
 
     const formData = new FormData(event.target as HTMLFormElement);
 
-    // Replace "YOUR_ACCESS_KEY_HERE" with your actual Web3Forms access key
-    formData.append("access_key", "82a9546e-6619-4589-b46b-17cd7ea2415f");
+    formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY!);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
