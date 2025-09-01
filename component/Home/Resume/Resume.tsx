@@ -1,11 +1,6 @@
 import React from 'react'
-import { BsDatabase } from 'react-icons/bs'
-import { FaCodepen } from 'react-icons/fa'
-import { FaReact } from 'react-icons/fa'
 import ResumeCard from './ResumeCard'
 import { BiBadge } from 'react-icons/bi'
-import { FaUpwork } from 'react-icons/fa6'
-import { SiWorkplace } from 'react-icons/si'
 import { MdOutlineWorkHistory } from 'react-icons/md'
 
 const Resume = () => {
@@ -29,7 +24,8 @@ const Resume = () => {
                     My <span className='text-cyan-200'>Education</span>
                 </h1>
                 <div className='mt-10 space-y-6' data-aos="zoom-out" data-aos-anchor-placement="top-center" data-aos-delay="200">
-                    <ResumeCard Icon={BiBadge} role="University Tunku Abdul Rahman" description="B.Sc. Software Engineering" date="2021 - 2024"/>
+                    <ResumeCard Icon={BiBadge} role="University College Dublin" company="M.Sc. Computer Science (Negotiated Learning)" date="2025 - 2026"/>
+                    <ResumeCard Icon={BiBadge} role="University Tunku Abdul Rahman" company="B.Sc. Software Engineering" date="2021 - 2024"/>
                 </div>
             </div>
         </div>
