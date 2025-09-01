@@ -6,7 +6,7 @@ import { BsArrowRight } from 'react-icons/bs';
 
 const Hero = () => {
   return (
-    <div className="relative h-screen flex items-center justify-center text-white overflow-hidden flex-col">
+    <div id="home" className="relative h-screen flex items-center justify-center text-white overflow-hidden flex-col">
         <div className='relative z-10 flex flex-col items-center ' >
             <Image
                 src="/image/harry.jpg"

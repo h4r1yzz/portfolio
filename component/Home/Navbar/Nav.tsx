@@ -3,9 +3,9 @@
 import { FaCode } from 'react-icons/fa'
 import React, { useEffect, useState } from 'react'
 import { Navlink } from '../../../constant/constant'
-import Link from 'next/link'
 import { BiDownload } from 'react-icons/bi'
-import { HiBars3BottomRight } from 'react-icons/hi2';
+import { HiBars3BottomRight } from 'react-icons/hi2'
+import { useActiveSection } from '../../../hooks/useActiveSection';
 
 type Props = {
     openNav: () => void;
@@ -13,6 +13,7 @@ type Props = {
 
 const Nav = ({openNav}: Props) => {
     const [navBg, setNavBg] = useState(false);
+    const { activeSection, scrollToSection } = useActiveSection();
 
     useEffect(()=> {
         const handler = () => {
@@ -27,6 +28,11 @@ const Nav = ({openNav}: Props) => {
             window.removeEventListener('scroll', handler);
         };
     }, []);
+
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+        e.preventDefault();
+        scrollToSection(sectionId);
+    };
 
 
   return (
@@ -44,14 +50,20 @@ const Nav = ({openNav}: Props) => {
             {/* navlinks */}
             <div className='hidden lg:flex items-center space-x-10'>
                 {Navlink.map((link) => {
+                    const isActive = activeSection === link.sectionId;
                     return (
-                        <Link 
-                            key={link.id} 
+                        <a
+                            key={link.id}
                             href={link.url}
-                            className='text-base hover:text-cyan-300 text-white font-medium transition-all duration-200'
-                            >
+                            onClick={(e) => handleNavClick(e, link.sectionId)}
+                            className={`text-base font-medium transition-all duration-200 cursor-pointer ${
+                                isActive
+                                    ? 'text-cyan-300 border-b-2 border-cyan-300'
+                                    : 'text-white hover:text-cyan-300'
+                            }`}
+                        >
                             <p>{link.label}</p>
-                        </Link>
+                        </a>
                     );
                 })}
             </div>
