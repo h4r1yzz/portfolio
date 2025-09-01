@@ -1,10 +1,46 @@
 "use client";
 
-import React from 'react'
+import React, { useState } from 'react'
 import { BiEnvelope } from 'react-icons/bi'
 import { FaFacebook } from 'react-icons/fa';
 
 const Contacts = () => {
+  const [result, setResult] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setResult("Sending....");
+
+    const formData = new FormData(event.target as HTMLFormElement);
+
+    // Replace "YOUR_ACCESS_KEY_HERE" with your actual Web3Forms access key
+    formData.append("access_key", "82a9546e-6619-4589-b46b-17cd7ea2415f");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setResult("Message sent successfully! Thank you for reaching out.");
+        (event.target as HTMLFormElement).reset();
+      } else {
+        console.log("Error", data);
+        setResult(data.message || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setResult("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className='pt-16 pb-16'>
         <div className='w-[90%] md:w-[80%] lg:w-[70%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center'>
@@ -15,7 +51,7 @@ const Contacts = () => {
 
                 </h1>
                 <p className='text-gray-400 mt-6 text-base sm:text-lg'>
-                     Reach out to 
+                     Reach out to
                 </p>
                 <div className='mt-7'>
                     <div className='flex items-center space-x-3 mb-4'>
@@ -53,13 +89,57 @@ const Contacts = () => {
             </div>
             {/* Form */}
             <div data-aos="zoom-in" data-aos-anchor-placement="top-center" data-aos-delay="0" className='md:p-10 p-5 bg-[#131332] rounded-lg'>
-                <input type='text' placeholder='Your name' className='px-4 py-3.5 mt-6 bg-[#363659] text-white outline-none rounded-md w-full placeholder:text-white/70' />
-                <input type='email' placeholder='Email' className='px-4 py-3.5 mt-6 bg-[#363659] text-white outline-none rounded-md w-full placeholder:text-white/70' />
-                <input type='number' placeholder='Number' className='px-4 py-3.5 mt-6 bg-[#363659] text-white outline-none rounded-md w-full placeholder:text-white/70' />  
-                <textarea placeholder='Message' className='px-4 py-3.5 mt-6 bg-[#363659] text-white outline-none rounded-md w-full placeholder:text-white/70 h=[10rem]' />
-                <button className='mt-8 px-12 py-4 bg-blue-950 hover:bg-blue-900 transition-all duration-300 cursor-pointer text-white rounded-full'>
-                    Send Message
-                </button>          
+                <form onSubmit={onSubmit}>
+                    <input
+                        type='text'
+                        name='name'
+                        placeholder='Your name'
+                        required
+                        className='px-4 py-3.5 mt-6 bg-[#363659] text-white outline-none rounded-md w-full placeholder:text-white/70'
+                    />
+                    <input
+                        type='email'
+                        name='email'
+                        placeholder='Email'
+                        required
+                        className='px-4 py-3.5 mt-6 bg-[#363659] text-white outline-none rounded-md w-full placeholder:text-white/70'
+                    />
+                    <input
+                        type='tel'
+                        name='phone'
+                        placeholder='Phone Number'
+                        className='px-4 py-3.5 mt-6 bg-[#363659] text-white outline-none rounded-md w-full placeholder:text-white/70'
+                    />
+                    <textarea
+                        name='message'
+                        placeholder='Message'
+                        required
+                        rows={4}
+                        className='px-4 py-3.5 mt-6 bg-[#363659] text-white outline-none rounded-md w-full placeholder:text-white/70 resize-none'
+                    />
+                    <button
+                        type='submit'
+                        disabled={isSubmitting}
+                        className={`mt-8 px-12 py-4 transition-all duration-300 cursor-pointer text-white rounded-full w-full ${
+                            isSubmitting
+                                ? 'bg-gray-600 cursor-not-allowed'
+                                : 'bg-blue-950 hover:bg-blue-900'
+                        }`}
+                    >
+                        {isSubmitting ? 'Sending...' : 'Send Message'}
+                    </button>
+                </form>
+                {result && (
+                    <div className={`mt-4 p-3 rounded-md text-center ${
+                        result.includes('successfully')
+                            ? 'bg-green-900/30 text-green-300 border border-green-600'
+                            : result.includes('Sending')
+                                ? 'bg-blue-900/30 text-blue-300 border border-blue-600'
+                                : 'bg-red-900/30 text-red-300 border border-red-600'
+                    }`}>
+                        {result}
+                    </div>
+                )}
             </div>
         </div>
     </div>
