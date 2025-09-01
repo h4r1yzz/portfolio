@@ -17,8 +17,8 @@ const Hero = () => {
                 data-aos="fade-up"
             />
             <h1 data-aos='fade-up' data-aos-delay="200" className='text-2xl sm:text-4xl md:text-5xl lg:text-6xl mt-6 text-center font-bold tracking-wide'> 
-                Creating web products, <br />
-                brands, 
+                Building practical solutions from the ground up, <br />
+                 
                 <span className='text-cyan-200'> and experiences </span>
             </h1>
             <h2 data-aos='fade-up' data-aos-delay="400" className='mt-5 text-sm px-2 text-center sm:text-2xl font-medium flex items-center'>

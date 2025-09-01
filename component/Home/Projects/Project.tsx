@@ -30,10 +30,10 @@ const Project = () => {
                         </div>
                     </div>
                     <h1 className='mt-4 text-xl sm:text-2xl font-semibold text-white group-hover:text-cyan-300 transition-colors duration-300'>
-                        Stock Analysis System
+                        Stock Analysis
                     </h1>
                     <h1 className='pt-2 font-medium text-white/80'>
-                        Data Science, Python, AI
+                        A stock analysis platform that let users to make investment decisions. It combines traditional stock performance analysis with sentiment analysis of financial news and LLM-generated recommendations to provide deeper insights into market trends.
                     </h1>
                 </a>
             </div>
@@ -58,10 +58,10 @@ const Project = () => {
                         </div>
                     </div>
                     <h1 className='mt-4 text-xl sm:text-2xl font-semibold text-white group-hover:text-cyan-300 transition-colors duration-300'>
-                        Healthcare Management System
+                        NeuroGrade
                     </h1>
                     <h1 className='pt-2 font-medium text-white/80'>
-                        AI, Machine Learning, Healthcare
+                        Deep learning solution that uses MRI scans to detect brain tumors and generate segmentation masks, combining human expertise with AI to get more accurate results, streamline workflows, and help doctors to get better understanding in complex cases 
                     </h1>
                 </a>
             </div>
