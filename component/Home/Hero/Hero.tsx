@@ -22,11 +22,11 @@ const Hero = () => {
                 <span className='text-cyan-200'> and experiences </span>
             </h1>
             <h2 data-aos='fade-up' data-aos-delay="400" className='mt-5 text-sm px-2 text-center sm:text-2xl font-medium flex items-center'>
-                Hi! I&apos;m harry  - a passionate 
+                Hi! I&apos;m Harry Chandra Tsjan  - a passionate 
                 <span className='text-cyan-200 font-bold'> 
                     <Typewriter 
                     options ={{
-                        strings: ['Frontend Developer', 'UI/UX Designer', 'Web Developer'],
+                        strings: ['AI Engineer', 'Data Science'],
                         autoStart: true,
                         loop: true,
                         delay: 50,

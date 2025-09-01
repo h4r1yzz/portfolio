@@ -44,7 +44,7 @@ const Nav = ({openNav}: Props) => {
                     <FaCode className='w-5 h-5 text-black' />
                 </div>
                 <h1 className='text-white text-xl font-bold hidden sm:block md:text-2xl'>
-                    HARRY
+                    Harry Chandra Tsjan
                 </h1>
             </div>
             {/* navlinks */}
