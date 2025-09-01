@@ -35,7 +35,7 @@ export default function ParticlesHero() {
         color: { value: "transparent" }, // Transparent for overlay use
       },
       fullScreen: {
-        enable: false,
+        enable: true,
       },
       fpsLimit: 60,
       interactivity: {
@@ -83,7 +83,7 @@ export default function ParticlesHero() {
       id="tsparticles"
       particlesLoaded={particlesLoaded}
       options={options}
-      className="absolute inset-0 "
+      className="fixed inset-0 w-full h-full z-0"
     />
   );
 }

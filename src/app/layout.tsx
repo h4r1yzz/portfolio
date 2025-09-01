@@ -4,6 +4,7 @@ import "./globals.css";
 import ResponsiveNav from "../../component/Home/Navbar/ResponsiveNav";
 import Footer from "../../component/Home/Footer/Footer";
 import ScrollToTop from "../../component/Helper/ScrollToTop";
+import ParticlesHero from "../../component/Home/Hero/ParticleBackground";
 
 const font = Inter({ 
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -23,10 +24,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${font.className} antialiased bg-[#0d0d1f]`}>
-        <ResponsiveNav />
-        {children}
-        <Footer />
-        <ScrollToTop />
+        <ParticlesHero />
+        <div className="relative z-10">
+          <ResponsiveNav />
+          {children}
+          <Footer />
+          <ScrollToTop />
+        </div>
       </body>
     </html>
   );
