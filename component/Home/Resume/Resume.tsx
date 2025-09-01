@@ -1,7 +1,7 @@
 import React from 'react'
 import ResumeCard from './ResumeCard'
-import { BiBadge } from 'react-icons/bi'
-import { MdOutlineWorkHistory } from 'react-icons/md'
+import { MdCastForEducation, MdOutlineWorkHistory } from 'react-icons/md'
+import { FaSchool } from 'react-icons/fa'
 
 const Resume = () => {
   return (
@@ -24,8 +24,8 @@ const Resume = () => {
                     My <span className='text-cyan-200'>Education</span>
                 </h1>
                 <div className='mt-10 space-y-6' data-aos="zoom-out" data-aos-anchor-placement="top-center" data-aos-delay="200">
-                    <ResumeCard Icon={BiBadge} role="University College Dublin" company="M.Sc. Computer Science (Negotiated Learning)" date="2025 - 2026"/>
-                    <ResumeCard Icon={BiBadge} role="University Tunku Abdul Rahman" company="B.Sc. Software Engineering" date="2021 - 2024"/>
+                    <ResumeCard Icon={FaSchool} role="University College Dublin" company="M.Sc. Computer Science (Negotiated Learning)" date="2025 - 2026"/>
+                    <ResumeCard Icon={FaSchool} role="University Tunku Abdul Rahman" company="B.Sc. Software Engineering" date="2021 - 2024"/>
                 </div>
             </div>
         </div>

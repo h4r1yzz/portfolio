@@ -12,7 +12,7 @@ type Props = {
 const ResumeCard = ({Icon, role, date, description, company}: Props) => {
   return (
     <div className='mb-6'>
-        <div className='flex flex-col bg-blue-950/20 transition-all duration-300 p-4 sm:p-8 rounded-md min-h-[200px] h-full'>
+        <div className={`flex flex-col bg-blue-950/20 transition-all duration-300 p-4 sm:p-8 rounded-md h-full ${description ? 'min-h-[200px]' : 'min-h-[120px]'}`}>
             {/* Header with icon, title and date */}
             <div className='flex items-start justify-between mb-4'>
                 <div className='flex items-start space-x-4'>
@@ -39,14 +39,16 @@ const ResumeCard = ({Icon, role, date, description, company}: Props) => {
                 )}
             </div>
 
-            {/* Description section that stretches */}
-            <div className='flex-1 flex items-start'>
-                <div className='w-full'>
-                    <p className='text-gray-300 text-sm sm:text-base leading-relaxed'>
-                        {description}
-                    </p>
+            {/* Description section that stretches - only if description exists */}
+            {description && (
+                <div className='flex-1 flex items-start'>
+                    <div className='w-full'>
+                        <p className='text-gray-300 text-sm sm:text-base leading-relaxed'>
+                            {description}
+                        </p>
+                    </div>
                 </div>
-            </div>
+            )}
         </div>
     </div>
   )
