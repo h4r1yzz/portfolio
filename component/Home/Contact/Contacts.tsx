@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from 'react'
-import { BiEnvelope } from 'react-icons/bi'
-import { FaFacebook } from 'react-icons/fa';
+import { BiEnvelope, BiPhone } from 'react-icons/bi'
+import { BsHouse } from 'react-icons/bs';
+import { FaAddressBook, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const Contacts = () => {
   const [result, setResult] = useState("");
@@ -47,17 +48,16 @@ const Contacts = () => {
             {/* Text content*/}
             <div>
                 <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-200'>
-                    Schedule a call with me
-
+                    Get in touch
                 </h1>
                 <p className='text-gray-400 mt-6 text-base sm:text-lg'>
-                     Reach out to
+                     If you have any questions, comments, or feedback, please don't hesitate to reach out.
                 </p>
                 <div className='mt-7'>
                     <div className='flex items-center space-x-3 mb-4'>
-                        <BiEnvelope className='w-9 h-9 text-cyan-300'/>
+                        <BiPhone className='w-9 h-9 text-cyan-300'/>
                         <p className='text-xl font-cold text-gray-400'>
-                            +438949310413
+                            +60132856188
                         </p>
                     </div>
                 </div>
@@ -65,26 +65,36 @@ const Contacts = () => {
                     <div className='flex items-center space-x-3 mb-4'>
                         <BiEnvelope className='w-9 h-9 text-cyan-300'/>
                         <p className='text-xl font-cold text-gray-400'>
-                            hello@exmaple.com
+                            harrychandratsjan@gmail.com
                         </p>
                     </div>
                 </div>
                 <div className='mt-7'>
                     <div className='flex items-center space-x-3 mb-4'>
-                        <BiEnvelope className='w-9 h-9 text-cyan-300'/>
+                        <BsHouse className='w-9 h-9 text-cyan-300'/>
                         <p className='text-xl font-cold text-gray-400'>
-                            Indon
+                            Selangor, Malaysia
                         </p>
                     </div>
                 </div>
                 {/* Social */}
                 <div className='flex items-center mt-8 space-x-3'>
-                    <div className='w-14 h-14 bg-blue-950/60 rounded-full flex items-center justify-center cursor-pointer flex-col hover:bg-blue-800 transition-all duration-300'>
-                        <FaFacebook className='w-6 h-6 text-white ' />
-                    </div>
-                    <div className='w-14 h-14 bg-blue-950/60 rounded-full flex items-center justify-center cursor-pointer flex-col hover:bg-blue-800 transition-all duration-300'>
-                        <FaFacebook className='w-6 h-6 text-white ' />
-                    </div>
+                    <a
+                        href="https://github.com/h4r1yzz"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className='w-14 h-14 bg-blue-950/60 rounded-full flex items-center justify-center cursor-pointer flex-col hover:bg-blue-800 transition-all duration-300'
+                    >
+                        <FaGithub className='w-6 h-6 text-white ' />
+                    </a>
+                    <a
+                        href="https://www.linkedin.com/in/harry-chandra-180870179/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className='w-14 h-14 bg-blue-950/60 rounded-full flex items-center justify-center cursor-pointer flex-col hover:bg-blue-800 transition-all duration-300'
+                    >
+                        <FaLinkedin className='w-6 h-6 text-white ' />
+                    </a>
                 </div>
             </div>
             {/* Form */}
