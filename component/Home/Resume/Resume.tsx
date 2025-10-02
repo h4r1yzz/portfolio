@@ -10,7 +10,7 @@ const Resume = () => {
             {/* Work Part */}
             <div className='h-full'>
                 <h1 className='text-3xl sm:text-4xl font-bold text-white'>
-                    My Work <span className='text-cyan-200'>Experience</span>
+                    My <span className='text-cyan-200'>Work Experience</span>
                 </h1>
                 <div className='mt-10 space-y-6' data-aos="zoom-in" data-aos-anchor-placement="top-center">
                     <ResumeCard Icon={MdOutlineWorkHistory} date="Mac 2025 - Sept 2025" role="Data Science" company='RosaryLabs' description='Designed a search engine workflow with MCP integration for dynamic tool use and multi-turn reasoning, evaluated LLM performance with DeepEval and custom metrics, and explored Qdrant and sparse embeddings for RAG'/>
@@ -24,7 +24,7 @@ const Resume = () => {
                     My <span className='text-cyan-200'>Education</span>
                 </h1>
                 <div className='mt-10 space-y-6' data-aos="zoom-out" data-aos-anchor-placement="top-center" data-aos-delay="200">
-                    <ResumeCard Icon={FaSchool} role="University College Dublin" company="M.Sc. Computer Science (Negotiated Learning)" date="2025 - 2026"/>
+                    {/* <ResumeCard Icon={FaSchool} role="University College Dublin" company="M.Sc. Computer Science (Negotiated Learning)" date="2025 - 2026"/> */}
                     <ResumeCard Icon={FaSchool} role="University Tunku Abdul Rahman" company="B.Sc. Software Engineering" date="2021 - 2024"/>
                 </div>
             </div>
