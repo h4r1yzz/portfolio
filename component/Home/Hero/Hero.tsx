@@ -3,8 +3,15 @@ import React from 'react'
 import Image from 'next/image'
 import Typewriter from 'typewriter-effect';
 import { BsArrowRight } from 'react-icons/bs';
+import { useActiveSection } from '../../../hooks/useActiveSection';
 
 const Hero = () => {
+  const { scrollToSection } = useActiveSection();
+
+  const handleSeeMyWorkClick = () => {
+    scrollToSection('projects');
+  };
+
   return (
     <div id="home" className="relative h-screen flex items-center justify-center text-white overflow-hidden flex-col">
         <div className='relative z-10 flex flex-col items-center ' >
@@ -16,15 +23,15 @@ const Hero = () => {
                 className="rounded-full border-8 border-[#0c0c48aa]"
                 data-aos="fade-up"
             />
-            <h1 data-aos='fade-up' data-aos-delay="200" className='text-2xl sm:text-4xl md:text-5xl lg:text-6xl mt-6 text-center font-bold tracking-wide'> 
+            <h1 data-aos='fade-up' data-aos-delay="200" className='text-2xl sm:text-4xl md:text-5xl lg:text-6xl mt-6 text-center font-bold tracking-wide'>
                 Building practical solutions from the ground up, <br />
-                 
+
                 <span className='text-cyan-200'>  </span>
             </h1>
             <h2 data-aos='fade-up' data-aos-delay="400" className='mt-5 text-sm px-2 text-center sm:text-2xl font-medium flex items-center'>
-                Hi! I&apos;m Harry Chandra Tsjan  - a passionate 
-                <span className='text-cyan-200 font-bold'> 
-                    <Typewriter 
+                Hi! I&apos;m Harry Chandra Tsjan  - a passionate
+                <span className='text-cyan-200 font-bold'>
+                    <Typewriter
                     options ={{
                         strings: ['AI Engineer', 'Data Science'],
                         autoStart: true,
@@ -32,11 +39,16 @@ const Hero = () => {
                         delay: 50,
                         deleteSpeed: 50,
                         wrapperClassName: 'pl-2',
-                    }} 
+                    }}
                     />
                 </span>
             </h2>
-            <button data-aos='fade-up' data-aos-delay="600" className="mt-6 px-10 py-4 bg-blue-800 hover:bg-blue-900 transition-all duration-300 cursor-pointer rounded-full text-lg font-medium">
+            <button
+                onClick={handleSeeMyWorkClick}
+                data-aos='fade-up'
+                data-aos-delay="600"
+                className="mt-6 px-10 py-4 bg-blue-800 hover:bg-blue-900 transition-all duration-300 cursor-pointer rounded-full text-lg font-medium"
+            >
                 <span> See my work </span>
                 <BsArrowRight className='w-5 h-5 inline-block' />
             </button>
