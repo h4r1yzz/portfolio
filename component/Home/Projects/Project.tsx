@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 
 const Project = () => {
   return (
@@ -9,18 +8,18 @@ const Project = () => {
             <span className='text-cyan-200'> Projects </span>
         </h1>
         <div className='w-[70%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 mt-16'>
-            {/* Stock Project */}
+            {/* Well Log Analysis Project */}
             <div data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-delay="0">
                 <a
-                    href="https://github.com/h4r1yzz/stock"
+                    href="https://github.com/h4r1yzz/mcp_langchain"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block group cursor-pointer"
                 >
                     <div className="relative overflow-hidden rounded-lg">
-                        <Image
-                            src="/image/stock.png"
-                            alt="Stock Analysis Project"
+                        <img
+                            src="/image/welllog.gif"
+                            alt="Well Log Analysis Project"
                             width={400}
                             height={700}
                             className='rounded-lg w-full h-82 object-cover transition-transform duration-300 group-hover:scale-105'
@@ -30,10 +29,10 @@ const Project = () => {
                         </div>
                     </div>
                     <h1 className='mt-4 text-xl sm:text-2xl font-semibold text-white group-hover:text-cyan-300 transition-colors duration-300'>
-                        Stock Analysis
+                        Well Log Analysis
                     </h1>
                     <h1 className='pt-2 font-medium text-white/80'>
-                        A stock analysis platform that let users to make investment decisions. It combines traditional stock performance analysis with sentiment analysis of financial news and LLM-generated recommendations to provide deeper insights into market trends.
+                      A smart geological data analysis platform built with Flask that leverages LangChain, LangGraph, and MCP to dynamically process LAS well-log files, execute real-time Python analysis, and deliver interactive visual insights through Plotly dashboards.
                     </h1>
                 </a>
             </div>
