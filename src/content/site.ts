@@ -116,7 +116,7 @@ export const elsewhereLinks = [
   { title: "miniscira", meta: "ai search", href: "#" },
   { title: "Writing", meta: "notes & essays", href: "#" },
   { title: "Photos", meta: "full gallery", href: "/photos" },
-  { title: "Visits", meta: "live map", href: "#" },
+  { title: "Visits", meta: "live map", href: "/visits" },
   { title: "Colophon", meta: "stack & meta", href: "/stack" },
 ] as const;
 
