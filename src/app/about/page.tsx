@@ -1,7 +1,7 @@
 import { existsSync } from "fs";
 import { join } from "path";
-import Link from "next/link";
 import { education, site, work } from "@/content/site";
+import ArrowLink from "@/components/arrow-link";
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
 
@@ -18,9 +18,7 @@ export default function AboutPage() {
 
         {hasResume && (
           <p>
-            <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-              Download resume ↗
-            </Link>
+            <ArrowLink href="/resume.pdf">Download resume</ArrowLink>
           </p>
         )}
 

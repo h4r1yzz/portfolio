@@ -1,7 +1,7 @@
 export const site = {
   name: "Harry Chandra",
   roles: ["Software Engineer", "AI Engineer"],
-  location: "Malaysia",
+  location: "Hong Kong",
   description:
     "Building software around AI, data systems, and useful products.",
   intro:
