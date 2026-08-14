@@ -28,7 +28,6 @@ export default function EditorialLink({
   const isExternal =
     external || href.startsWith("http") || href.startsWith("mailto:");
   const isMailto = href.startsWith("mailto:");
-  const isPlaceholder = href === "#";
   const className = `editorial-link${layout === "row" ? " editorial-link--row" : ""}`;
 
   // Not every visitor has a mail client registered for mailto:, so also put the
@@ -80,14 +79,6 @@ export default function EditorialLink({
       <span className="meta">{copied ? "address copied" : meta}</span>
     </>
   );
-
-  if (isPlaceholder) {
-    return (
-      <div className={className} {...hoverProps}>
-        {body}
-      </div>
-    );
-  }
 
   if (isExternal) {
     return (
