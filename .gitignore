@@ -33,6 +33,10 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# local editor / agent notes (not ship code)
+.cursor/
+design.md
+
 # vercel
 .vercel
 
