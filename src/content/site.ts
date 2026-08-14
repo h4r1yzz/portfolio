@@ -5,11 +5,18 @@ export const site = {
   description:
     "Building software around AI, data systems, and useful products.",
   intro:
-    "Software engineer building at the intersection of AI, data, and full-stack product development.",
+    "Building software around AI, data systems, and useful products.",
   marquee: "Harry Chandra · ",
 } as const;
 
 export const work = [
+  {
+    role: "AI Engineer",
+    company: "Carbon AI",
+    date: "Dec 2025 – Aug 2026",
+    description:
+      "Built production-grade AI systems focused on multi-agent workflows, Retrieval-Augmented Generation (RAG), and scalable backend services. Designed and evaluated LLM pipelines using LangChain, LangGraph, Ragas, pgvector, and Vertex AI, and deployed cloud-native infrastructure on Google Cloud Platform.",
+  },
   {
     role: "Data Science",
     company: "RosaryLabs",
@@ -18,7 +25,7 @@ export const work = [
       "Designed a search engine workflow with MCP integration for dynamic tool use and multi-turn reasoning, evaluated LLM performance with DeepEval and custom metrics, and explored Qdrant and sparse embeddings for RAG.",
   },
   {
-    role: "Software Engineer",
+    role: "Software Engineer Intern",
     company: "Consolsys",
     date: "Oct 2024 – Jan 2025",
     description:
@@ -66,6 +73,17 @@ export const projects = [
       "Deep learning solution that uses MRI scans to detect brain tumors and generate segmentation masks, combining human expertise with AI to get more accurate results, streamline workflows, and help doctors get better understanding in complex cases.",
     href: "https://github.com/h4r1yzz/Healthcare",
     image: "/image/healthcare.gif",
+  },
+  {
+    id: "medx",
+    year: "2026",
+    title: "medX",
+    summary: "Smarter blood-test analysis for clinics & hospitals",
+    description:
+      "Helps doctors make sense of blood test results, and bridges small clinics with hospitals so care stays connected across both.",
+    href: "#",
+    image: "",
+    badge: "coming soon!",
   },
 ] as const;
 

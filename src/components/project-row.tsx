@@ -12,6 +12,7 @@ type Props = {
   summary: string;
   href: string;
   image: string;
+  badge?: string;
 };
 
 export default function ProjectRow({
@@ -21,42 +22,55 @@ export default function ProjectRow({
   summary,
   href,
   image,
-}: Props) {
+  badge,
+}: Readonly<Props>) {
   const [hovered, setHovered] = useState(false);
-  const isExternal = href.startsWith("http");
+  const comingSoon = Boolean(badge) || href === "#";
+  const isExternal = !comingSoon && href.startsWith("http");
   const target = isExternal ? href : `/projects#${id}`;
 
   const body = (
     <>
-      <div className="project-row__preview" aria-hidden="true">
-        <Image
-          src={image}
-          alt=""
-          width={320}
-          height={200}
-          unoptimized
-          className="project-row__preview-img"
-        />
-      </div>
+      {image && (
+        <div className="project-row__preview" aria-hidden="true">
+          <Image
+            src={image}
+            alt=""
+            width={320}
+            height={200}
+            unoptimized
+            className="project-row__preview-img"
+          />
+        </div>
+      )}
       <span className="project-row__year">{year}</span>
       <span className="project-row__heading">
         <span className="link-title">{title}</span>
-        <ExternalLinkIcon
-          className="project-row__icon"
-          size={14}
-          active={hovered}
-        />
+        {badge && <span className="project-row__badge">{badge}</span>}
+        {!comingSoon && (
+          <ExternalLinkIcon
+            className="project-row__icon"
+            size={14}
+            active={hovered}
+          />
+        )}
       </span>
       <span className="project-row__summary">{summary}</span>
     </>
   );
 
-  const hoverProps = {
-    onMouseEnter: () => setHovered(true),
-    onMouseLeave: () => setHovered(false),
-    onFocus: () => setHovered(true),
-    onBlur: () => setHovered(false),
-  };
+  const hoverProps = comingSoon
+    ? {}
+    : {
+        onMouseEnter: () => setHovered(true),
+        onMouseLeave: () => setHovered(false),
+        onFocus: () => setHovered(true),
+        onBlur: () => setHovered(false),
+      };
+
+  if (comingSoon) {
+    return <div className="project-row project-row--soon">{body}</div>;
+  }
 
   if (isExternal) {
     return (

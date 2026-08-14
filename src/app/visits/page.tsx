@@ -8,6 +8,7 @@ import VisitsChart from "@/components/visits/visits-chart";
 import VisitsMap from "@/components/visits/visits-map";
 import VisitsRefresh from "@/components/visits/visits-refresh";
 import { getVisitsSnapshot } from "@/lib/visits";
+import { pageLabel } from "@/lib/visits-format";
 
 export default async function VisitsPage() {
   const data = await getVisitsSnapshot();
@@ -85,7 +86,10 @@ export default async function VisitsPage() {
           visits: c.visits,
           code: c.code,
         }))}
-        pages={data.pages.map((p) => ({ label: p.path, visits: p.visits }))}
+        pages={data.pages.map((p) => ({
+          label: pageLabel(p.path),
+          visits: p.visits,
+        }))}
       />
 
       <Footer />

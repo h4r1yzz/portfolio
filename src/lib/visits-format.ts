@@ -26,6 +26,13 @@ export function flagEmoji(code?: string) {
   );
 }
 
+/** Friendly label for a path: `/` → home, `/photos` → photos. */
+export function pageLabel(path: string) {
+  const clean = path.replace(/\/+$/, "") || "/";
+  if (clean === "/") return "home";
+  return clean.replace(/^\//, "");
+}
+
 export function chartGeometry(series: ChartPoint[]) {
   const { width, height, pad } = CHART;
   const innerW = width - pad.left - pad.right;

@@ -318,6 +318,28 @@ a:focus-visible {
   text-align: right;
 }
 
+.project-row__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #b8b4ff;
+  font-size: 11px;
+  line-height: 1.2;
+  white-space: nowrap;
+  transform: rotate(4deg);
+  transform-origin: center;
+}
+
+.project-row--soon {
+  cursor: default;
+}
+
+.project-row--soon .link-title::after {
+  display: none;
+}
+
 @media (max-width: 640px) {
   .project-row {
     grid-template-columns: 3rem 1fr;

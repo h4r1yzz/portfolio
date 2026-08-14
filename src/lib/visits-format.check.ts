@@ -1,6 +1,6 @@
 // Run with: node src/lib/visits-format.check.ts
 import assert from "node:assert/strict";
-import { CHART, chartGeometry, flagEmoji, niceMax } from "./visits-format.ts";
+import { CHART, chartGeometry, flagEmoji, niceMax, pageLabel } from "./visits-format.ts";
 
 assert.equal(niceMax(0), 2);
 assert.equal(niceMax(1), 2);
@@ -33,6 +33,12 @@ assert.equal(
 );
 assert.equal(many.points[0].y, many.baseline, "zero sits on the baseline");
 assert.ok(many.area.startsWith(`${CHART.pad.left},${many.baseline}`));
+
+assert.equal(pageLabel("/"), "home");
+assert.equal(pageLabel(""), "home");
+assert.equal(pageLabel("/photos"), "photos");
+assert.equal(pageLabel("/visits/"), "visits");
+assert.equal(pageLabel("/projects"), "projects");
 
 assert.equal(flagEmoji("sg"), "\u{1F1F8}\u{1F1EC}");
 assert.equal(flagEmoji("MY"), "\u{1F1F2}\u{1F1FE}");

@@ -46,6 +46,7 @@ export default function Home() {
             summary={project.summary}
             href={project.href}
             image={project.image}
+            badge={"badge" in project ? project.badge : undefined}
           />
         ))}
       </Section>

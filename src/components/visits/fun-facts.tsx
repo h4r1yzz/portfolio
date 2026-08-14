@@ -1,6 +1,7 @@
 import { LuFileText, LuLink, LuMonitor } from "react-icons/lu";
 import StatCard from "@/components/visits/stat-card";
 import type { VisitsSnapshot } from "@/lib/visits-types";
+import { pageLabel } from "@/lib/visits-format";
 
 type Props = {
   data: VisitsSnapshot;
@@ -31,7 +32,7 @@ export default function FunFacts({ data }: Readonly<Props>) {
         <StatCard
           icon={LuFileText}
           label="Top page"
-          value={topPage?.path ?? "—"}
+          value={topPage ? pageLabel(topPage.path) : "—"}
           sub={topPage ? `${topPage.visits.toLocaleString()} visits` : "no data"}
         />
       </div>
