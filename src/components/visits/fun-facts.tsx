@@ -1,56 +1,39 @@
+import { LuFileText, LuLink, LuMonitor } from "react-icons/lu";
+import StatCard from "@/components/visits/stat-card";
 import type { VisitsSnapshot } from "@/lib/visits-types";
 
 type Props = {
   data: VisitsSnapshot;
 };
 
-export default function FunFacts({ data }: Props) {
-  const facts = [
-    {
-      label: "Countries",
-      value: String(data.countriesReached),
-      sub: "across the map",
-    },
-    {
-      label: "Busiest day",
-      value: data.busiestDay ? String(data.busiestDay.visits) : "—",
-      sub: data.busiestDay?.date ?? "last 30 days",
-    },
-    {
-      label: "Farthest",
-      value: data.farthest ? `${data.farthest.km.toLocaleString()} km` : "—",
-      sub: data.farthest?.country ?? "approximate",
-    },
-    {
-      label: "Top referrer",
-      value: data.topReferrer?.name ?? "—",
-      sub: data.topReferrer
-        ? `${data.topReferrer.visits.toLocaleString()} visits`
-        : "direct / unknown",
-    },
-    {
-      label: "Mobile",
-      value: `${data.devices.mobilePct}%`,
-      sub: `${data.devices.desktopPct}% desktop`,
-    },
-    {
-      label: "Total",
-      value: data.totalVisits.toLocaleString(),
-      sub: "tracked visits",
-    },
-  ];
+export default function FunFacts({ data }: Readonly<Props>) {
+  const topPage = data.pages[0];
 
   return (
     <div className="visits-facts">
-      <h2 className="visits-section-label">Fun facts</h2>
       <div className="visits-facts__grid">
-        {facts.map((fact) => (
-          <div key={fact.label} className="visits-fact">
-            <p className="visits-fact__label">{fact.label}</p>
-            <p className="visits-fact__value">{fact.value}</p>
-            <p className="visits-fact__sub">{fact.sub}</p>
-          </div>
-        ))}
+        <StatCard
+          icon={LuLink}
+          label="Top referrer"
+          value={data.topReferrer?.name ?? "—"}
+          sub={
+            data.topReferrer
+              ? `${data.topReferrer.visits.toLocaleString()} visits`
+              : "direct / unknown"
+          }
+        />
+        <StatCard
+          icon={LuMonitor}
+          label="Device"
+          value={`${data.devices.mobilePct}% mobile`}
+          sub={`${data.devices.desktopPct}% desktop`}
+        />
+        <StatCard
+          icon={LuFileText}
+          label="Top page"
+          value={topPage?.path ?? "—"}
+          sub={topPage ? `${topPage.visits.toLocaleString()} visits` : "no data"}
+        />
       </div>
     </div>
   );

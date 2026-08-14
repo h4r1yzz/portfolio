@@ -69,41 +69,54 @@ export const projects = [
   },
 ] as const;
 
-export const skills = [
-  "TypeScript",
-  "Python",
-  "Next.js",
-  "AWS",
-  "PostgreSQL",
-  "MongoDB",
-  "Apache Airflow",
+export const skillGroups = [
+  {
+    title: "Languages",
+    items: ["TypeScript", "Python"],
+  },
+  {
+    title: "Frameworks",
+    items: ["React", "Next.js", "LangChain"],
+  },
+  {
+    title: "AI & tools",
+    items: ["OpenAI", "Cursor"],
+  },
+  {
+    title: "Cloud",
+    items: ["AWS", "Google Cloud", "Azure"],
+  },
+  {
+    title: "Data",
+    items: ["PostgreSQL", "MongoDB", "Apache Airflow"],
+  },
 ] as const;
 
 export const photos = [
   {
     src: "/photos/office-team.jpg",
     alt: "Team at the office",
-    caption: "Team at the office",
+    caption: "Carbon Ai Team",
   },
   {
     src: "/photos/mermaid-statue.jpg",
     alt: "Mermaid statue",
-    caption: "Mermaid statue, Kuala Lumpur",
+    caption: "Took it at China ",
   },
   {
     src: "/photos/hackathon-trophy.jpg",
     alt: "Hackathon trophy",
-    caption: "Hackathon winner with the team",
+    caption: "1st runner up in hackathon",
   },
   {
     src: "/photos/event-selfie.jpg",
     alt: "Event with friends",
-    caption: "With friends at an event",
+    caption: "With Co-founder of Cleve AI",
   },
   {
     src: "/photos/team-photo.jpg",
     alt: "Team photo",
-    caption: "Team photo",
+    caption: "Rosary Labs team picture",
   },
 ] as const;
 
@@ -113,11 +126,9 @@ export const moreLinks = [
 ] as const;
 
 export const elsewhereLinks = [
-  { title: "miniscira", meta: "ai search", href: "#" },
   { title: "Writing", meta: "notes & essays", href: "#" },
   { title: "Photos", meta: "full gallery", href: "/photos" },
   { title: "Visits", meta: "live map", href: "/visits" },
-  { title: "Colophon", meta: "stack & meta", href: "/stack" },
 ] as const;
 
 export const connectLinks = [

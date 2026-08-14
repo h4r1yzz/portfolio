@@ -31,6 +31,11 @@ function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number) {
   return r * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
+function asVisits(value: unknown) {
+  const n = Number(value);
+  return Number.isFinite(n) ? n : 0;
+}
+
 function mapCountries(rows: ExpandedMetric[]) {
   return rows
     .map((row) => {
@@ -39,7 +44,7 @@ function mapCountries(rows: ExpandedMetric[]) {
       return {
         code,
         name: meta?.name ?? row.name,
-        visits: row.visits,
+        visits: asVisits(row.visits),
       };
     })
     .filter((c) => c.visits > 0)
@@ -48,7 +53,7 @@ function mapCountries(rows: ExpandedMetric[]) {
 
 function mapPages(rows: ExpandedMetric[]) {
   return rows
-    .map((row) => ({ path: row.name || "/", visits: row.visits }))
+    .map((row) => ({ path: row.name || "/", visits: asVisits(row.visits) }))
     .filter((p) => p.visits > 0)
     .sort((a, b) => b.visits - a.visits);
 }
@@ -148,7 +153,7 @@ export async function getVisitsSnapshot(): Promise<VisitsSnapshot> {
 
     const series30d = (pageviews.sessions ?? []).map((row) => ({
       date: formatSeriesDate(row.x, config.timezone),
-      visits: row.y,
+      visits: asVisits(row.y),
     }));
 
     const lastVisitor = latestSession?.country
@@ -161,7 +166,7 @@ export async function getVisitsSnapshot(): Promise<VisitsSnapshot> {
 
     return {
       configured: true,
-      totalVisits: stats.visits,
+      totalVisits: asVisits(stats.visits),
       lastVisitor,
       series30d,
       countries,

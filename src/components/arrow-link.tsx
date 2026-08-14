@@ -30,7 +30,7 @@ export default function ArrowLink({
     >
       <span className="link-title">{children}</span>
       <ExternalLinkIcon
-        className={`inline-flex transition-colors ${hovered ? "text-accent" : "text-muted"}`}
+        className="arrow-link__icon text-accent"
         size={14}
         active={hovered}
       />

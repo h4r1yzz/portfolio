@@ -58,6 +58,7 @@ export default function Home() {
             meta={link.meta}
             href={link.href}
             layout="row"
+            icon="chevron"
           />
         ))}
       </Section>
@@ -71,6 +72,7 @@ export default function Home() {
             href={link.href}
             layout="row"
             external={link.external}
+            icon="external"
           />
         ))}
       </Section>

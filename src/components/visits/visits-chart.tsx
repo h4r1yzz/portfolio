@@ -1,54 +1,83 @@
-type Point = { date: string; visits: number };
+import {
+  CHART,
+  chartGeometry,
+  shortDate,
+  type ChartPoint,
+} from "@/lib/visits-format";
 
 type Props = {
-  series: Point[];
+  series: ChartPoint[];
 };
 
-export default function VisitsChart({ series }: Props) {
+export default function VisitsChart({ series }: Readonly<Props>) {
   if (series.length === 0) {
     return (
-      <div className="visits-chart">
-        <h2 className="visits-section-label">Last 30 days</h2>
+      <section className="visits-chart">
+        <p className="visits-chart__label">Visits · last 30 days</p>
         <div className="visits-chart__empty">No visits yet</div>
-      </div>
+      </section>
     );
   }
 
-  const width = 640;
-  const height = 160;
-  const pad = { top: 12, right: 8, bottom: 24, left: 8 };
-  const innerW = width - pad.left - pad.right;
-  const innerH = height - pad.top - pad.bottom;
-  const maxY = Math.max(...series.map((p) => p.visits), 1);
-
-  const points = series.map((p, i) => {
-    const x = pad.left + (i / Math.max(series.length - 1, 1)) * innerW;
-    const y = pad.top + innerH - (p.visits / maxY) * innerH;
-    return { x, y };
-  });
-
-  const line = points.map((p) => `${p.x},${p.y}`).join(" ");
+  const { width, height, pad } = CHART;
+  const { baseline, maxY, line, area, yTicks, xLabels, peak } =
+    chartGeometry(series);
 
   return (
-    <div className="visits-chart">
-      <h2 className="visits-section-label">Last 30 days</h2>
+    <section className="visits-chart">
+      <p className="visits-chart__label">Visits · last 30 days</p>
       <svg
         viewBox={`0 0 ${width} ${height}`}
         className="visits-chart__svg"
-        aria-hidden
+        role="img"
+        aria-label={`Visits over the last ${series.length} days, peaking at ${peak.visits} on ${peak.date}`}
       >
-        {[0, 0.25, 0.5, 0.75, 1].map((t) => (
-          <line
-            key={t}
-            x1={pad.left}
-            x2={width - pad.right}
-            y1={pad.top + innerH * (1 - t)}
-            y2={pad.top + innerH * (1 - t)}
-            className="visits-chart__grid"
-          />
-        ))}
+        <defs>
+          <linearGradient id="visitsFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.28" />
+            <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+
+        {yTicks.map((tick) => {
+          const y = baseline - (tick / maxY) * (baseline - pad.top);
+          return (
+            <g key={tick}>
+              <line
+                x1={pad.left}
+                x2={width - pad.right}
+                y1={y}
+                y2={y}
+                className="visits-chart__grid"
+              />
+              <text
+                x={pad.left - 8}
+                y={y + 3.5}
+                textAnchor="end"
+                className="visits-chart__axis"
+              >
+                {Number.isInteger(tick) ? tick : tick.toFixed(1)}
+              </text>
+            </g>
+          );
+        })}
+
+        <polygon points={area} fill="url(#visitsFill)" />
         <polyline points={line} className="visits-chart__line" fill="none" />
+        <circle cx={peak.x} cy={peak.y} r={3.5} className="visits-chart__peak" />
+
+        {xLabels.map((p) => (
+          <text
+            key={p.date}
+            x={p.x}
+            y={height - 8}
+            textAnchor="middle"
+            className="visits-chart__axis"
+          >
+            {shortDate(p.date)}
+          </text>
+        ))}
       </svg>
-    </div>
+    </section>
   );
 }
