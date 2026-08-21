@@ -83,12 +83,6 @@ function devicePercents(rows: ExpandedMetric[]) {
   };
 }
 
-function topReferrer(rows: ExpandedMetric[]) {
-  const sorted = [...rows].sort((a, b) => b.visits - a.visits);
-  const top = sorted.find((r) => r.name && r.name !== "(none)");
-  return top ? { name: top.name, visits: top.visits } : undefined;
-}
-
 function busiestDay(series: { date: string; visits: number }[]) {
   if (series.length === 0) return undefined;
   return series.reduce((best, row) => (row.visits > best.visits ? row : best));
@@ -134,7 +128,6 @@ export async function getVisitsSnapshot(): Promise<VisitsSnapshot> {
       stats,
       countryRows,
       pathRows,
-      referrerRows,
       deviceRows,
       pageviews,
       latestSession,
@@ -142,7 +135,6 @@ export async function getVisitsSnapshot(): Promise<VisitsSnapshot> {
       fetchStats(config, startAll, endAll),
       fetchExpandedMetrics(config, "country", startAll, endAll),
       fetchExpandedMetrics(config, "path", startAll, endAll),
-      fetchExpandedMetrics(config, "referrer", startAll, endAll),
       fetchExpandedMetrics(config, "device", startAll, endAll),
       fetchPageviewsSeries(config, start30, end30),
       fetchLatestSession(config, startAll, endAll),
@@ -172,7 +164,6 @@ export async function getVisitsSnapshot(): Promise<VisitsSnapshot> {
       countries,
       pages,
       devices: devicePercents(deviceRows),
-      topReferrer: topReferrer(referrerRows),
       busiestDay: busiestDay(series30d),
       farthest: farthestCountry(countries, config.homeLat, config.homeLng),
       countriesReached: countries.length,
