@@ -1,4 +1,4 @@
-import { LuFileText, LuLink, LuMonitor } from "react-icons/lu";
+import { LuFileText, LuMonitor } from "react-icons/lu";
 import StatCard from "@/components/visits/stat-card";
 import type { VisitsSnapshot } from "@/lib/visits-types";
 import { pageLabel } from "@/lib/visits-format";
@@ -13,16 +13,6 @@ export default function FunFacts({ data }: Readonly<Props>) {
   return (
     <div className="visits-facts">
       <div className="visits-facts__grid">
-        <StatCard
-          icon={LuLink}
-          label="Top referrer"
-          value={data.topReferrer?.name ?? "—"}
-          sub={
-            data.topReferrer
-              ? `${data.topReferrer.visits.toLocaleString()} visits`
-              : "direct / unknown"
-          }
-        />
         <StatCard
           icon={LuMonitor}
           label="Device"

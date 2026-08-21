@@ -1,15 +1,11 @@
-import { Suspense } from "react";
 import { LuCalendar } from "react-icons/lu";
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
-import VisitsDashboard from "@/components/visits/visits-dashboard";
-import VisitsRefresh from "@/components/visits/visits-refresh";
 import VisitsSkeleton from "@/components/visits/visits-skeleton";
 
-export default function VisitsPage() {
+export default function VisitsLoading() {
   return (
     <main className="page">
-      <VisitsRefresh />
       <PageHeader label="Analytics" title="Visits" />
 
       <div className="visits-topbar">
@@ -28,9 +24,7 @@ export default function VisitsPage() {
         </div>
       </div>
 
-      <Suspense fallback={<VisitsSkeleton />}>
-        <VisitsDashboard />
-      </Suspense>
+      <VisitsSkeleton />
 
       <Footer />
     </main>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
 import UmamiScript from "@/components/umami-script";
+import "@/bones/registry";
 import "./globals.css";
 
 const inter = Inter({
