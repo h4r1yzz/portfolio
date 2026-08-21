@@ -10,7 +10,7 @@ export default function VisitsPage() {
   return (
     <main className="page">
       <VisitsRefresh />
-      <PageHeader label="Analytics" title="Visits" />
+      <PageHeader label="Analytics" title="Analytic" />
 
       <div className="visits-topbar">
         <p className="visits-subtitle">

@@ -6,7 +6,7 @@ import VisitsSkeleton from "@/components/visits/visits-skeleton";
 export default function VisitsLoading() {
   return (
     <main className="page">
-      <PageHeader label="Analytics" title="Visits" />
+      <PageHeader label="Analytics" title="Analytic" />
 
       <div className="visits-topbar">
         <p className="visits-subtitle">

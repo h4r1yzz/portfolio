@@ -145,7 +145,7 @@ export const moreLinks = [
 
 export const elsewhereLinks = [
   { title: "Photos", meta: "full gallery", href: "/photos" },
-  { title: "Visits", meta: "live map", href: "/visits" },
+  { title: "Analytic", meta: "live map", href: "/visits" },
 ] as const;
 
 export const connectLinks = [

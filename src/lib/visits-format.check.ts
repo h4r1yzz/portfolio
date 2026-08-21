@@ -37,7 +37,7 @@ assert.ok(many.area.startsWith(`${CHART.pad.left},${many.baseline}`));
 assert.equal(pageLabel("/"), "home");
 assert.equal(pageLabel(""), "home");
 assert.equal(pageLabel("/photos"), "photos");
-assert.equal(pageLabel("/visits/"), "visits");
+assert.equal(pageLabel("/visits/"), "analytic");
 assert.equal(pageLabel("/projects"), "projects");
 
 assert.equal(flagEmoji("sg"), "\u{1F1F8}\u{1F1EC}");

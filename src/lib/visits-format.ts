@@ -30,6 +30,7 @@ export function flagEmoji(code?: string) {
 export function pageLabel(path: string) {
   const clean = path.replace(/\/+$/, "") || "/";
   if (clean === "/") return "home";
+  if (clean === "/visits") return "analytic";
   return clean.replace(/^\//, "");
 }
 
