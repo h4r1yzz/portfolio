@@ -18,7 +18,7 @@ export const work = [
       "Built production-grade AI systems focused on multi-agent workflows, Retrieval-Augmented Generation (RAG), and scalable backend services. Designed and evaluated LLM pipelines using LangChain, LangGraph, Ragas, pgvector, and Vertex AI, and deployed cloud-native infrastructure on Google Cloud Platform.",
   },
   {
-    role: "Data Science",
+    role: "Data Science Intern",
     company: "RosaryLabs",
     date: "Mar 2025 – Sept 2025",
     description:
